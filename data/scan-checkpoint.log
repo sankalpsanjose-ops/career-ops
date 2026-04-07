@@ -1,0 +1,7 @@
+# Scan Checkpoint Log
+# Each scan run appends phase-by-phase progress here.
+# Format: [HH:MM:SS] PHASE | status: done | found: N raw | kept: N after filter | added: N new | note: ...
+
+[00:00:00] INIT | status: done | config loaded: 29 companies, 15 queries | dedup sources: 0 applications, 0 pipeline
+[00:01:30] NIVEL_3_QUERIES | status: done | queries: 15 (+4 follow-up) | found: ~130 raw | kept: 14 after filter | added: 14 new
+[00:02:10] FINAL | status: done | total added to pipeline: 14 | skipped_title: 1 (Swiggy Data Scientist I — entry level) | skipped_dup: 0

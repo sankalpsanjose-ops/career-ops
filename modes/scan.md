@@ -48,13 +48,37 @@ Los `search_queries` con `site:` filters cubren portales de forma transversal (t
 
 Los niveles son aditivos — se ejecutan todos, los resultados se mezclan y deduplicar.
 
+## Checkpoint Logging
+
+**EVERY phase below MUST write a checkpoint** to `data/scan-checkpoint.log` immediately upon completion.
+This file is the live progress log — the user can open it at any time to see what's happening.
+
+Checkpoint format (append a new line after each phase):
+```
+[HH:MM:SS] PHASE_NAME | status: done | found: N raw | kept: N after filter | added: N new | note: ...
+```
+
+Example entries:
+```
+[10:02:01] INIT | status: done | config loaded: 29 companies, 9 queries | dedup sources: 0 applications, 0 pipeline
+[10:02:45] NIVEL_1_BATCH_1 | status: done | companies: Flipkart, Meesho, Swiggy | found: 12 raw | kept: 5 after filter | added: 5 new
+[10:03:30] NIVEL_1_BATCH_2 | status: done | companies: Zomato, PhonePe, Razorpay | found: 8 raw | kept: 3 after filter | added: 3 new
+[10:05:10] NIVEL_3_QUERIES | status: done | queries: 9 | found: 22 raw | kept: 11 after filter | added: 9 new (2 dup)
+[10:05:15] FINAL | status: done | total added to pipeline: 17 | skipped_title: 14 | skipped_dup: 3
+```
+
+Write the checkpoint using the Write/Edit tool (append to the file). **Do not skip checkpoints** — they are the only way to monitor background scan progress.
+
+---
+
 ## Workflow
 
 1. **Leer configuración**: `portals.yml`
 2. **Leer historial**: `data/scan-history.tsv` → URLs ya vistas
 3. **Leer dedup sources**: `data/applications.md` + `data/pipeline.md`
+4. **→ CHECKPOINT**: `INIT` — log companies count, queries count, dedup source sizes
 
-4. **Nivel 1 — Playwright scan** (paralelo en batches de 3-5):
+5. **Nivel 1 — Playwright scan** (paralelo en batches de 3-5):
    Para cada empresa en `tracked_companies` con `enabled: true` y `careers_url` definida:
    a. `browser_navigate` a la `careers_url`
    b. `browser_snapshot` para leer todos los job listings
@@ -63,38 +87,43 @@ Los niveles son aditivos — se ejecutan todos, los resultados se mezclan y dedu
    e. Si la página pagina resultados, navegar páginas adicionales
    f. Acumular en lista de candidatos
    g. Si `careers_url` falla (404, redirect), intentar `scan_query` como fallback y anotar para actualizar la URL
+   **→ CHECKPOINT after each batch**: `NIVEL_1_BATCH_N` — log companies in batch, raw found, kept, added
 
-5. **Nivel 2 — Greenhouse APIs** (paralelo):
+6. **Nivel 2 — Greenhouse APIs** (paralelo):
    Para cada empresa en `tracked_companies` con `api:` definida y `enabled: true`:
    a. WebFetch de la URL de API → JSON con lista de jobs
    b. Para cada job extraer: `{title, url, company}`
    c. Acumular en lista de candidatos (dedup con Nivel 1)
+   **→ CHECKPOINT**: `NIVEL_2_APIS` — log APIs hit, raw found, kept, added
 
-6. **Nivel 3 — WebSearch queries** (paralelo si posible):
+7. **Nivel 3 — WebSearch queries** (paralelo si posible):
    Para cada query en `search_queries` con `enabled: true`:
    a. Ejecutar WebSearch con el `query` definido
    b. De cada resultado extraer: `{title, url, company}`
       - **title**: del título del resultado (antes del " @ " o " | ")
-      - **url**: URL del resultado
+      - **url**: URL del resultado — MUST be the specific job listing URL, NOT the company careers homepage. If the URL is a root careers page (e.g. `greenhouse.io/company` with no job ID), discard it and use WebSearch to find the specific job URL.
       - **company**: después del " @ " en el título, o extraer del dominio/path
-   c. Acumular en lista de candidatos (dedup con Nivel 1+2)
+   c. **VALIDATE each URL**: If URL does not contain a job ID or specific path (e.g. ends at `/razorpaysoftwareprivatelimited` with no `/jobs/NNNN`), run a follow-up WebSearch: `"{company}" "{title}" job apply 2026` to find the direct listing URL.
+   d. Acumular en lista de candidatos (dedup con Nivel 1+2)
+   **→ CHECKPOINT**: `NIVEL_3_QUERIES` — log queries run, raw found, kept, added
 
-6. **Filtrar por título** usando `title_filter` de `portals.yml`:
+8. **Filtrar por título** usando `title_filter` de `portals.yml`:
    - Al menos 1 keyword de `positive` debe aparecer en el título (case-insensitive)
    - 0 keywords de `negative` deben aparecer
    - `seniority_boost` keywords dan prioridad pero no son obligatorios
 
-7. **Deduplicar** contra 3 fuentes:
+9. **Deduplicar** contra 3 fuentes:
    - `scan-history.tsv` → URL exacta ya vista
    - `applications.md` → empresa + rol normalizado ya evaluado
    - `pipeline.md` → URL exacta ya en pendientes o procesadas
 
-8. **Para cada oferta nueva que pase filtros**:
-   a. Añadir a `pipeline.md` sección "Pendientes": `- [ ] {url} | {company} | {title}`
-   b. Registrar en `scan-history.tsv`: `{url}\t{date}\t{query_name}\t{title}\t{company}\tadded`
+10. **Para cada oferta nueva que pase filtros**:
+    a. Añadir a `pipeline.md` sección "Pendientes": `- [ ] {url} | {company} | {title}`
+    b. Registrar en `scan-history.tsv`: `{url}\t{date}\t{query_name}\t{title}\t{company}\tadded`
 
-9. **Ofertas filtradas por título**: registrar en `scan-history.tsv` con status `skipped_title`
-10. **Ofertas duplicadas**: registrar con status `skipped_dup`
+11. **Ofertas filtradas por título**: registrar en `scan-history.tsv` con status `skipped_title`
+12. **Ofertas duplicadas**: registrar con status `skipped_dup`
+13. **→ CHECKPOINT**: `FINAL` — log total added, skipped_title, skipped_dup
 
 ## Extracción de título y empresa de WebSearch results
 

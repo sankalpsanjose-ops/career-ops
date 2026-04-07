@@ -7,9 +7,17 @@ Procesa URLs de ofertas acumuladas en `data/pipeline.md`. El usuario agrega URLs
 1. **Leer** `data/pipeline.md` → buscar items `- [ ]` en la sección "Pendientes"
 2. **Para cada URL pendiente**:
    a. Calcular siguiente `REPORT_NUM` secuencial (leer `reports/`, tomar el número más alto + 1)
-   b. **Extraer JD** usando Playwright (browser_navigate + browser_snapshot) → WebFetch → WebSearch
-   c. Si la URL no es accesible → marcar como `- [!]` con nota y continuar
-   d. **Ejecutar auto-pipeline completo**: Evaluación A-F → Report .md → PDF (si score >= 3.0) → Tracker
+   b. **Verificar que el rol está activo PRIMERO** — usar WebFetch en la URL. If the page contains any of these signals, mark as `- [!] CLOSED` and skip (do NOT write a report or tracker entry):
+      - "no longer accepting applications"
+      - "this job is closed"
+      - "position has been filled"
+      - "job not found" / 404
+      - Page redirects to generic jobs listing without showing the specific role
+      - Instahyre/aggregator shows role but says "not accepting applications"
+      If closed → log to scan-history.tsv with status `closed` and move to Procesadas as `- [!] CLOSED`
+   c. **Extraer JD** usando Playwright (browser_navigate + browser_snapshot) → WebFetch → WebSearch
+   d. Si la URL no es accesible → marcar como `- [!]` con nota y continuar
+   e. **Ejecutar auto-pipeline completo**: Evaluación A-F → Report .md → PDF (si score >= 3.0) → Tracker
    e. **Mover de "Pendientes" a "Procesadas"**: `- [x] #NNN | URL | Empresa | Rol | Score/5 | PDF ✅/❌`
 3. **Si hay 3+ URLs pendientes**, lanzar agentes en paralelo (Agent tool con `run_in_background`) para maximizar velocidad.
 4. **Al terminar**, mostrar tabla resumen:
