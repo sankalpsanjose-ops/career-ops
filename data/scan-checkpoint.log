@@ -5,3 +5,6 @@
 [00:00:00] INIT | status: done | config loaded: 29 companies, 15 queries | dedup sources: 0 applications, 0 pipeline
 [00:01:30] NIVEL_3_QUERIES | status: done | queries: 15 (+4 follow-up) | found: ~130 raw | kept: 14 after filter | added: 14 new
 [00:02:10] FINAL | status: done | total added to pipeline: 14 | skipped_title: 1 (Swiggy Data Scientist I — entry level) | skipped_dup: 0
+[09:00:00] INIT | status: done | config: 58 companies, 19 queries | dedup: 14 already evaluated
+[09:45:00] NIVEL_3_QUERIES | status: done | queries: 64 | found: ~180 raw | kept: 23 after filter | added: 23 new
+[09:45:01] FINAL | status: done | total added: 23 | skipped_title: ~40 (root/category pages, entry-level, Data Engineer) | skipped_dup: 5 (BCG X DS, Meesho DS II, Razorpay Lead DS, Amazon Business India DS, PhonePe DS)

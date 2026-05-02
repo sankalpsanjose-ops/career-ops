@@ -85,6 +85,82 @@ Incluir también:
 - 1 case study recomendado (cuál de sus proyectos presentar y cómo)
 - Preguntas red-flag y cómo responderlas (ej: "¿por qué vendiste tu empresa?", "¿tienes equipo de reports?")
 
+## Bloque G — Pay Assessment
+
+Use WebSearch to find comp data for this specific role + level + city. Present:
+
+| Level | Base Range | Variable | Estimated Total |
+|-------|-----------|----------|-----------------|
+| This role | ₹XX–YY LPA | X–Y% | ₹XX–YY LPA |
+| Market benchmark | ₹XX–YY LPA | — | — |
+| Candidate's current | ₹53 LPA | — | — |
+
+**Verdict sentence:** Is this a step up, lateral, or step down financially?
+**Negotiation anchor:** Give a specific "don't go below / target / stretch" range.
+
+If no data is available, say so — never invent numbers.
+
+---
+
+## Bloque H — Profile Fit Rating
+
+Give a single overall rating: **EXCELLENT / GOOD / MIXED / NEEDS WORK / SKIP**
+
+Then a table by dimension:
+
+| Dimension | Rating | Notes |
+|-----------|--------|-------|
+| Title match | ✅/⚠️/❌ | |
+| Location | ✅/⚠️/❌ | |
+| Domain expertise | ✅/⚠️/❌ | |
+| Technical skills | ✅/⚠️/❌ | |
+| Team/leadership | ✅/⚠️/❌ | |
+| Seniority fit | ✅/⚠️/❌ | |
+| [role-specific dims] | | |
+
+---
+
+## Bloque I — Key JD Callouts
+
+Bullet list of 6–10 specific phrases or requirements from the JD that matter most — with a one-line annotation for each explaining WHY it matters (what it reveals about the real job, what to say, what to watch for).
+
+Format:
+> **"[exact JD phrase]"** — [annotation]
+
+---
+
+## Bloque J — What to Leverage in the Interview
+
+5–8 specific proof points from the CV mapped to interview moments. Not generic strengths — specific stories, numbers, or credentials that will land hardest for THIS role at THIS company.
+
+Format: numbered list, each item = proof point + why it lands here specifically.
+
+---
+
+## Bloque K — Brush Up / Crash Course Plan
+
+Table of skills/topics to prepare before the interview:
+
+| Topic | Why | How (specific resource or action) |
+|-------|-----|----------------------------------|
+| [skill] | [gap reason] | [specific 1–3 hr action] |
+
+Separate into:
+- **Must-do** (directly mentioned in JD, likely to come up in interview)
+- **Nice-to-have** (adjacent, would strengthen candidacy)
+
+---
+
+## Bloque L — Other Report Notes
+
+Free-form section for anything not covered above:
+- Competitive landscape (who else applies for this role)
+- Application channel advice (direct URL, referral path, LinkedIn contact)
+- Interview format (if known for this company)
+- Internal title mapping / career path
+- Timing / urgency signals
+- Red flags or watch-outs
+
 ---
 
 ## Post-evaluación
@@ -131,6 +207,24 @@ Guardar evaluación completa en `reports/{###}-{company-slug}-{YYYY-MM-DD}.md`.
 
 ## G) Draft Application Answers
 (solo si score >= 4.5 — borradores de respuestas para el formulario de aplicación)
+
+## H) Profile Fit Rating
+(EXCELLENT / GOOD / MIXED / NEEDS WORK / SKIP — with dimension table)
+
+## I) Key JD Callouts
+(6–10 specific JD phrases with annotations)
+
+## J) What to Leverage in the Interview
+(5–8 specific proof points mapped to this role)
+
+## K) Brush Up / Crash Course Plan
+(Must-do and nice-to-have prep table)
+
+## L) Pay Assessment
+(comp table with target range and negotiation anchor)
+
+## M) Other Report Notes
+(competition, application channel, interview format, timing, red flags)
 
 ---
 

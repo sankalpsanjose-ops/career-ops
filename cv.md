@@ -18,7 +18,8 @@ Data Science & Analytics lead with 11+ years at eBay and LatentView, driving hig
 
 **ML & Analytics:** Clustering (K-Means, Custom), Anomaly Detection, NLP, Regression, A/B Testing, Forecasting
 
-**Emerging Stack:** Streamlit, LangChain, OpenAI API, NLU frameworks (applied in production Query Science project, 2025)
+**AI Engineering:** Claude API (Anthropic SDK), multi-agent orchestration, agentic loops, LangChain, OpenAI API, NLU frameworks
+**Full-Stack:** Next.js, TypeScript, React, Supabase, Vercel, Streamlit
 
 ---
 
@@ -91,6 +92,17 @@ Data Science & Analytics lead with 11+ years at eBay and LatentView, driving hig
 **eBay Analytics Leadership Development Program (ALDP)** | Sep 2022 – Aug 2024
 
 Competitively selected for eBay's global ALDP — 16 analysts chosen from 100+ applicants — completing four rotations across Berlin, London, Bellevue and San Jose, each delivering production-grade analytics within 6-month sprints.
+
+---
+
+## AI Projects
+
+### Claude Trader — Autonomous Multi-Agent Trading System
+*Live: claude-trader-delta.vercel.app · github.com/sankalpsanjose-ops/claude-trader*
+
+- Designed and deployed a 6-agent hierarchical trading system using the Claude API: four specialist agents (market data, technical analysis, sentiment/macro, fundamentals) run in parallel, a synthesizer consolidates signals and flags conflicts, and a portfolio manager executes final decisions — fully automated via Vercel Cron on a daily cycle.
+- Implemented a monthly self-reflection loop where the AI reviews its own trading performance, identifies behavioral patterns, and autonomously evolves its decision rules — no manual intervention required.
+- Built full-stack in Next.js/TypeScript with Supabase for trade history and audit trails, real-time P&L tracking, position sizing constraints, and sector diversification guardrails.
 
 ---
 
