@@ -104,6 +104,13 @@ Competitively selected for eBay's global ALDP — 16 analysts chosen from 100+ a
 - Implemented a monthly self-reflection loop where the AI reviews its own trading performance, identifies behavioral patterns, and autonomously evolves its decision rules — no manual intervention required.
 - Built full-stack in Next.js/TypeScript with Supabase for trade history and audit trails, real-time P&L tracking, position sizing constraints, and sector diversification guardrails.
 
+### Emowear — AI Communication Coach for High-Stakes Conversations
+*github.com/sankalpsanjose-ops/emowear*
+
+- Built a web app that decodes subtext in workplace conversations (passive-aggression, implied blame, credibility challenges) using Claude's structured tool_use, and generates three calibrated response options per tone (direct, diplomatic, assertive).
+- Shipped persistent user profiles with auto-inferred personality notes, 7-day stress tracking dashboard, and iterative refinement through v0.5 based on user feedback — demonstrating full product lifecycle thinking.
+- Stack: Next.js/TypeScript, Anthropic Claude API (tool_use), TailwindCSS, Jest + React Testing Library.
+
 ---
 
 ## Education

@@ -44,5 +44,59 @@
 
 ---
 
-## More projects to be added
-<!-- Add second project (tough conversations dashboard) here once shared -->
+---
+
+## Project: Emowear
+
+**What it is:** Web app that decodes subtext in high-stakes workplace conversations and generates calibrated response options.
+**Links:** github.com/sankalpsanjose-ops/emowear
+
+**What it does:**
+- User pastes a meeting statement or transcript
+- Claude analyzes subtext: passive-aggression, implied blame, credibility challenges, power dynamics
+- Returns three distinct response options tuned to different communication styles (direct, diplomatic, assertive)
+- Profiles remember your communication personality over time via auto-inferred notes
+- 7-day stress tracking dashboard across conversation history
+
+**Technical detail:**
+- Claude API with `tool_use` for structured JSON responses (not freeform text)
+- System prompt (~60 lines) with explicit guardrails: 15-word max per response, no corporate jargon, conversational tone enforced
+- 957 lines TypeScript; clean separation across lib/, app/, components/
+- localStorage persistence (no backend DB — deliberate for privacy)
+- Jest + React Testing Library coverage
+- Iterated to v0.5 based on real user feedback: added profiles, stress meter, personality tracking
+
+**What makes it interesting for roles:**
+- Shows product thinking beyond the model: UX iteration, edge case handling, privacy-first architecture choice
+- `tool_use` integration is more sophisticated than prompt-in/text-out — structured outputs, validation, error handling
+- Self-improving profile layer (learns communication style over time) mirrors agentic memory patterns
+
+**Talking points:**
+- "I used tool_use instead of freeform generation because I needed guaranteed structured outputs — the UI renders three distinct response cards, so I needed deterministic JSON, not prose."
+- "The personality notes are auto-inferred from patterns across conversations — the user never fills a form, it just learns from usage."
+
+---
+
+## Project: Coaster (Claude Code Plugin)
+
+**What it is:** A Claude Code plugin that monitors cognitive wellness during long coding sessions and nudges you to take breaks or hand off context.
+**Links:** github.com/sankalpsanjose-ops/coaster
+
+**What it does:**
+- Hooks into Claude Code's UserPromptSubmit, Stop, and SessionStart events
+- Detects four signals: overwork (>90 min session), cognitive debt (Claude doing 85%+ of thinking), repetitive loops (same approaches detected via response hashing), stress (frustrated keyword frequency)
+- Delivers personality-flavored nudges: "peer_coder", "drill_sergeant", "zen_master"
+- On handoff: generates structured summary (current state, open threads, first move) so you don't lose context
+
+**Technical detail:**
+- Pure Node.js hooks, no external services or dependencies
+- State stored in JSON files at ~/.claude/coaster/
+- 807 lines of production code + 40 unit tests (Jest)
+- Two-tier cooldown: 5 turns after firing, 20 turns after dismissal — prevents intrusiveness
+- Response hashing for loop detection (not keyword matching — actual structural similarity)
+- Top-level try/catch on all hooks + silent fail mode so it never breaks Claude Code
+
+**CV usage guidance:**
+- Include when applying to: developer tools companies, AI-native startups, roles that mention "Claude Code", "MCP", "agent tooling"
+- Skip or downplay for: pure data science, analytics, or business roles where the reader won't know what a Claude Code plugin is
+- Best framing: "built a local dev tool that hooks into the Claude Code runtime to monitor session health" — accessible without assuming knowledge
