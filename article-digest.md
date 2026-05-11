@@ -4,6 +4,31 @@
 
 ---
 
+## Patent: Enhancing Item Retrieval Using Fitment Match (eBay, filed Dec 2024)
+
+**Status:** US Patent Application filed — Sankalp Arun Patil is a named co-inventor  
+**Docket:** IP-P3864US1 / Application No. 428838  
+**Assignee:** eBay Inc.  
+**Co-inventors:** Sarabdeep Singh Multani, Suhas Giridhar Danavandi, Prathihasth Rekabu, Saurabh Dubey, Sankalp Arun Patil
+
+**What the invention does:**  
+Automotive parts on eBay have "fitments" — compatibility metadata (year/make/model of car a part fits). The patent covers a system that:
+1. Generates a hash per fitment for each part listing
+2. Clusters part listings based on **fitment match** (overlap of fitment hash sets) — identifying interchangeable parts across sellers
+3. Uses these clusters to **expand search recall** and **improve recommendations** — returning interchangeable parts the user might not find through keyword search alone
+4. Supports exact (100%) or threshold-based (e.g., 80%) fitment overlap, with optional price/category signals to prevent false clustering
+
+**Scale context:** Patent cites eBay's 1.7 billion listings and ~3 billion monthly visits — this system operates at that scale.
+
+**Talking points:**
+- "I co-invented a fitment-based clustering system for eBay Motors search — it improves recall by grouping interchangeable parts across listings, so a search for a part number surfaces all equivalent listings, not just exact-match ones."
+- "The core insight was treating compatibility metadata as a clustering signal rather than a filter — similar to how you'd use embeddings for semantic similarity, but deterministic and explainable."
+- "This is now a filed US patent assigned to eBay — the team went through formal IP review and prosecution."
+
+**Relevant for:** ML Engineer, Search/Recommendation Engineer, Applied Scientist, Data Scientist, Senior Product Analyst roles — demonstrates production ML/IR work at scale with institutional validation.
+
+---
+
 ## Project: Claude Trader
 
 **What it is:** Autonomous multi-agent trading system built with Claude API. Live on Vercel.
