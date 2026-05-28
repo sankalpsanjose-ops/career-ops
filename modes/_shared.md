@@ -21,6 +21,8 @@
 
 **RULE: NEVER hardcode metrics from proof points.** Read them from cv.md + article-digest.md at evaluation time.
 **RULE: For article/project metrics, article-digest.md takes precedence over cv.md** (cv.md may have older numbers).
+**RULE: NEVER mention Scala in any generated CV, PDF, or report — user does not know Scala.**
+**RULE: When referencing Spark-based data work, always use "SparkSQL" explicitly — do not use generic "SQL" for Spark workloads.**
 
 ---
 

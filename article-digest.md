@@ -25,7 +25,7 @@ Automotive parts on eBay have "fitments" — compatibility metadata (year/make/m
 - "The core insight was treating compatibility metadata as a clustering signal rather than a filter — similar to how you'd use embeddings for semantic similarity, but deterministic and explainable."
 - "This is now a filed US patent assigned to eBay — the team went through formal IP review and prosecution."
 
-**Relevant for:** ML Engineer, Search/Recommendation Engineer, Applied Scientist, Data Scientist, Senior Product Analyst roles — demonstrates production ML/IR work at scale with institutional validation.
+**Relevant for:** Analytics Lead, Senior Product Analyst, Search/Recommendation Engineer, Applied Scientist, Data Scientist roles — demonstrates production-scale data engineering and IR work with institutional validation (US patent).
 
 ---
 

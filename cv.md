@@ -8,15 +8,15 @@ Mumbai, India | +91 93724 77508 | sankalp.patil@iiml.org | linkedin.com/in/sanka
 
 ## Professional Summary
 
-Data Science & Analytics lead with 11+ years at eBay and LatentView, driving high-impact solutions across marketplace, FP&A, fraud detection and product analytics. Built production-grade ML pipelines processing 3B+ records, earned a patent-pending invention recognition, and led global rotations across San Jose, London, Berlin and Bellevue. Fluent in Python, PySpark, SQL and Tableau — with a consistent track record of translating complex data into decisions that move business metrics.
+Analytics & Data Engineering Lead with 11+ years at eBay and LatentView, driving high-impact decisions across marketplace, FP&A, fraud detection and product analytics. Built production-grade data pipelines processing 3B+ records, earned a patent-pending invention recognition, and led global rotations across San Jose, London, Berlin and Bellevue. Fluent in Python, PySpark, SparkSQL and Tableau — with a consistent track record of translating complex data into decisions that move business metrics.
 
 ---
 
 ## Technical Skills
 
-**Languages & Tools:** Python, SQL, PySpark, R, Tableau, Excel (Advanced)
+**Languages & Tools:** Python, SparkSQL, PySpark, Tableau, Excel (Advanced)
 
-**ML & Analytics:** Clustering (K-Means, Custom), Anomaly Detection, NLP, Regression, A/B Testing, Forecasting
+**Analytics & ML:** A/B Testing, Forecasting, Regression, Anomaly Detection, NLP, Clustering
 
 **AI Engineering:** Claude API (Anthropic SDK), multi-agent orchestration, agentic loops, LangChain, OpenAI API, NLU frameworks
 **Full-Stack:** Next.js, TypeScript, React, Supabase, Vercel, Streamlit
@@ -42,7 +42,7 @@ Data Science & Analytics lead with 11+ years at eBay and LatentView, driving hig
 
 #### eBay Motors *(San Jose)*
 - Led part-matching accuracy strategy across 150M+ listings, impacting buyers' experience and conversion in eBay's Motors category.
-- Built a parallel PySpark pipeline cutting multi-billion record processing time by 70% (14+ hrs → <4 hrs), enabling weekly catalog refreshes.
+- Built a parallel PySpark + SparkSQL pipeline cutting multi-billion record processing time by 70% (14+ hrs → <4 hrs), enabling weekly catalog refreshes.
 - Recognized by eBay Inventor's Club (2024) for patentable contributions to fitment taxonomization — top 2% of global analytics org.
 
 #### Hard Goods Analytics *(London)*
